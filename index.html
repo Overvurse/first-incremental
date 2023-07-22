@@ -13,15 +13,13 @@
 
     <script>
         var stats = {"userName" : 0, "health" : 0, "score" : 0}
-        var health = 100;
-        var score = 0;
         var userName = "New Player";
 
-        function increment(value,amount)
+        function increment(variable,amount)
         {
-            value = stats[value]
+            value = stats[variable]
             value = value + amount;
-            document.getElementById(value).innerHTML = value;
+            document.getElementById(variable).innerHTML = value;
         }
     </script>
 </body>

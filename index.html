@@ -8,5 +8,19 @@
 <body>
     <h1>Test</h1>
     <p1>Testing</p1>
+
+    <button onclick="increment(score,1)">Clicks: <span id="score">0</span></button>
+
+    <script>
+        var health = 100;
+        var score = 0;
+        var name = "New Player";
+
+        function increment(value,amount)
+        {
+            value+=increase;
+            document.getElementById(value).innerHTML = value;
+        }
+    </script>
 </body>
 </html>

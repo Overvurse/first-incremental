@@ -16,8 +16,11 @@
         .column {
         	outline-style:solid;
             outline-width:thin;
-        	outline-color:black;
+        	outline-color:grey;
+            
             text-align:center;
+            font-family: "Helvetica";
+            margin: 5px;
             float: left;
             width: 20%;
             height:75%;
@@ -26,30 +29,47 @@
         .header {
             outline-style:solid;
             outline-width:thin;
-        	outline-color:black;
+            outline-color:grey;
+            
+            font-family: "Helvetica";
             text-align:center;
+            margin: 5px;
             float: left;
             width: 20%;
             height:5%;
         }
         
         .row:after {
+        	font-family: "Helvetica";
             content: "";
             display: table;
             clear: both;
         }
-
-        .button
-        {
-            width: 100%;
+        
+        .button {
+            border-width: 1px;
+            border-color:grey;
+        	border-style:solid;
+        	font-family: "Helvetica";
+        	width: 95%;
+            margin: 5px;
+        	background-color:white;
         }
 
     </style>
-
 </head>
+
+
+
+
+
+
+
 <body>
     <div class="row">
-        <div class="header"></div>
+        <div class="header">
+        	Tabs:<br>
+        </div>
         <div class="header">
             Actions:<br>
         </div>
@@ -64,6 +84,11 @@
         <div class="column"></div>
         <div id="effectsContainer" class="column"></div>
     </div>
+    
+    
+    
+    
+    
     <script>
         const FPS = 60;
 
@@ -73,7 +98,7 @@
 
             button.textContent = text;
             button.id = buttonID;
-            button.style.width = "100%";
+            button.className = "button";
             button.style.height = "7.5%";
 
             const buttonContainer = document.getElementById(parent);

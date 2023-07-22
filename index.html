@@ -6,21 +6,89 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Test</h1>
-    <p1>Testing</p1>
-
-    <button onclick="increment('score',1)">Clicks: <span id="score">0</span></button>
-
+    <div id="actionContainer"></div>
+    <div id="effectsContainer"></div>
     <script>
-        var stats = {"userName" : 0, "health" : 0, "score" : 0}
-        var userName = "New Player";
-
-        function increment(variable,amount)
+        function createButton(buttonID,parent,text)
         {
-            stats[variable] += amount;
+            const button = document.createElement("button");
 
-            document.getElementById(variable).innerHTML = stats[variable];
+            button.textContent = text;
+            button.id = buttonID;
+
+            const buttonContainer = document.getElementById(parent);
+            buttonContainer.appendChild(button);
+
+            return button;
         }
+
+        class Player
+        {
+            constructor()
+            {
+                //Stats
+                this.name = "New player";
+                this.health = 100;
+                this.level = 1;
+                this.cash = 0;
+
+                //Status Abnormalities
+                this.effects = {
+
+                }
+
+                this.initEquips();
+            }
+            initEquips()
+            {
+                this.headSlot = null;
+                this.torsoSlot = null;
+                this.leftHandSlot = null;
+                this.rightHandSlot = null;
+                this.legsSlot = null;
+                this.feetSlot = null;
+                this.TrinketSlotA = null;
+                this.TrinketSlotB = null;
+            }
+
+            inflictEffect(name, desc, duration, decay)
+            {
+                const newEffect =
+                {
+                    "desc" : desc,
+                    "duration" : duration,
+                    "decay" : decay
+                }
+
+                this.effects[name] = newEffect
+            }
+            displayEffects()
+            {
+                const txtStatusEffects = document.getElementById("effectsContainer")
+                const lstStatusEffectNames = Object.keys(this.effects).join(", ")
+                txtStatusEffects.innerHTML = `Status Effects: ${lstStatusEffectNames}`;
+            }
+        }
+
+        var you = new Player();
+
+        you.inflictEffect("sleep","You are asleep, wake up!", 100, false)
+
+        let btnWakeUp = createButton("btnWU", "actionContainer", "Wake Up!");
+        btnWakeUp.addEventListener("click", function()
+        {
+            if(you.effects["sleep"])
+            {
+                you.effects["sleep"]["duration"]-=1;
+            }
+        });
+
+        function main()
+        {
+            you.displayEffects();
+        }
+
+        setInterval(main, 1000)
     </script>
 </body>
 </html>

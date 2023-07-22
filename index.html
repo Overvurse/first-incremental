@@ -12,13 +12,15 @@
     <button onclick="increment('score',1)">Clicks: <span id="score">0</span></button>
 
     <script>
+        var stats = {"userName" : 0, "health" : 0, "score" : 0}
         var health = 100;
         var score = 0;
-        var name = "New Player";
+        var userName = "New Player";
 
         function increment(value,amount)
         {
-            value+=increase;
+            value = stats[value]
+            value = value + amount;
             document.getElementById(value).innerHTML = value;
         }
     </script>

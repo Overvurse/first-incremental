@@ -14,9 +14,23 @@
         }
 
         .column {
-            background-color: black;
+        	outline-style:solid;
+            outline-width:thin;
+        	outline-color:black;
+            text-align:center;
             float: left;
-            width: 25%;
+            width: 20%;
+            height:75%;
+        }
+
+        .header {
+            outline-style:solid;
+            outline-width:thin;
+        	outline-color:black;
+            text-align:center;
+            float: left;
+            width: 20%;
+            height:5%;
         }
         
         .row:after {
@@ -24,19 +38,31 @@
             display: table;
             clear: both;
         }
+
+        .button
+        {
+            width: 100%;
+        }
+
     </style>
 
 </head>
 <body>
     <div class="row">
-        <div class="column"></div>
-        <div class="column">
-            <div id="actionContainer"></div>
+        <div class="header"></div>
+        <div class="header">
+            Actions:<br>
+        </div>>
+        <div class="header"></div>
+        <div class="header">
+            Effects:<br>
         </div>
+    </div>
+    <div class="row">
         <div class="column"></div>
-        <div class="column">
-            <div id="effectsContainer"></div>
-        </div>
+        <div id="actionContainer" class="column"></div>
+        <div class="column"></div>
+        <div id="effectsContainer" class="column"></div>
     </div>
     <script>
         const FPS = 60;
@@ -47,6 +73,8 @@
 
             button.textContent = text;
             button.id = buttonID;
+            button.style.width = "100%";
+            button.style.height = "7.5%";
 
             const buttonContainer = document.getElementById(parent);
             buttonContainer.appendChild(button);
@@ -94,30 +122,46 @@
 
                 this.effects[name] = newEffect
             }
-            displayEffects()
+            handleEffects()
             {
+                let effectText = '';
+
                 const txtStatusEffects = document.getElementById("effectsContainer")
-                const lstStatusEffectNames = Object.keys(this.effects).join(", ")
-                txtStatusEffects.innerHTML = `Status Effects: ${lstStatusEffectNames}`;
+                
+                for (const effectName in this.effects)
+                {
+                    if(this.effects[effectName].duration > 0)
+                    {
+                        const effect = this.effects[effectName];
+                        effectText += `${effectName} ${effect.duration}<br> `;
+                    }
+                    else
+                    {
+                        delete(this.effects[effectName]);
+                    }
+                }
+
+                txtStatusEffects.innerHTML = effectText;
             }
         }
 
         var you = new Player();
 
-        you.inflictEffect("sleep","You are asleep, wake up!", 100, false)
+        you.inflictEffect("Sleep","You are asleep, wake up!", 10, false)
+        //you.inflictEffect("Burning","You are on fire!", 100, true)
 
         let btnWakeUp = createButton("btnWU", "actionContainer", "Wake Up!");
         btnWakeUp.addEventListener("click", function()
         {
-            if(you.effects["sleep"])
+            if(you.effects["Sleep"])
             {
-                you.effects["sleep"]["duration"]-=1;
+                you.effects["Sleep"]["duration"]-=1;
             }
         });
 
         function main()
         {
-            you.displayEffects();
+            you.handleEffects();
 
         }
 

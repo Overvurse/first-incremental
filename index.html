@@ -17,9 +17,9 @@
 
         function increment(variable,amount)
         {
-            value = stats[variable]
-            value = value + amount;
-            document.getElementById(variable).innerHTML = value;
+            stats[variable] += amount;
+
+            document.getElementById(variable).innerHTML = stats[variable];
         }
     </script>
 </body>

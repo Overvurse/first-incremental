@@ -8,17 +8,35 @@
     <style>
         #actionContainer {
             background-color: color(rgb(148, 148, 148));
-            position: absolute;top: 0px;left: 0px;
         }
         #effectsContainer {
             background-color: color(rgb(148,148,148));
-            position: absolute;top: 0px;right: 0px;
+        }
+
+        .column {
+            float: left;
+            width: 25%;
+        }
+        
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
         }
     </style>
+
 </head>
 <body>
-    <div id="actionContainer"></div>
-    <div id="effectsContainer"></div>
+    <div class="row">
+        <div class="column"></div>
+        <div class="column">
+            <div id="actionContainer"></div>
+        </div>
+        <div class="column"></div>
+        <div class="column">
+            <div id="effectsContainer"></div>
+        </div>
+    </div>
     <script>
         const FPS = 60;
 

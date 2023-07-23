@@ -3,72 +3,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="styles.css"/>
     <title>First Incremental</title>
-
-    <style>
-        #gameContainer {
-            width:1200;
-            height:900;
-            position:absolute;
-            top:50%;
-            left:50%;
-            transform:translate(-50%,-50%)
-        }
-        #playerContainer {
-            width:200px;
-            height:200px;
-            position:absolute;
-            top:50%;
-            left:50%;
-            transform:translate(-225%,-98%);
-        }
-        #actionContainer { 
-            width:500px;
-            height:400px;
-            position:absolute;
-            top:50%;
-            left:50%;
-            transform:translate(-50%,-50%)
-            
-        }
-        #effectsContainer {
-            width:200px;
-            height:200px;
-            position:absolute;
-            top:50%;
-            left:50%;
-            transform:translate(-225%,-2%)
-        }
-        #outputContainer {
-        	position:absolute;
-            width:200px;
-            height:400px;
-            top:50%;
-            left:50%;
-            transform:translate(125%,-50%)
-        }
-        
-        .container{
-        	font-family: "Helvetica";
-            font-weight: bold;
-        	border-style:groove;
-            border-color:black;
-            border-width:thick;
-            background-color:grey;
-        }
-        
-        .button {
-            font-family: "Helvetica";
-            font-weight: bold;
-            border-width: 5px;
-            border-color:black;
-        	border-style:groove;
-            float:left;
-            margin: 5px;
-        	background-color:rgb(180,180,180);
-        }
-
-    </style>
 </head>
 
 
@@ -135,7 +71,6 @@
                 this.TrinketSlotA = null;
                 this.TrinketSlotB = null;
             }
-
             inflictEffect(name, desc, duration, decay)
             {
                 const newEffect =
@@ -158,7 +93,7 @@
                     if(this.effects[effectName].duration > 0)
                     {
                         const effect = this.effects[effectName];
-                        effectText += `${effectName} ${effect.duration}<br> `;
+                        effectText += `<div class="container">${effectName} ${effect.duration}</div> `;
                     }
                     else
                     {

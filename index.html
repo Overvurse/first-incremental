@@ -9,15 +9,25 @@
 
 
 
-<body style="background-color:rgb(40,40,40);text-align:center">
-    <div id="gameContainer" class="container">
-        <div id="playerContainer" class="container">
-            <p>Name: </p>
-            <div class="bar"></div>
+<body style="background-color:rgb(36, 36, 46);;text-align:center">
+    <div>
+        <div class ="column left">
+            <div id="player" class="container">
+                <div id="name" class="label">NAME</div>
+            </div>
+            <div id="effectsContainer" class="container">
+                <div class="label">EFFECTS</div>
+                <div id="effects"></div>
+            </div>
         </div>
-        <div id="actionContainer" class="container"></div>
-        <div id="effectsContainer" class="container"></div>
-        <div id="outputContainer" class="container"></div>
+        <div class ="column center">
+            <div id="actionContainer" class="container">
+            </div>
+        </div>
+        <div class ="column right">
+            <div id="outputContainer" class="container">
+            </div>
+        </div>
     </div>
     
     
@@ -50,10 +60,9 @@
                 this.health = 100;
                 this.level = 1;
                 this.cash = 0;
-
+                
                 //Status Abnormalities
                 this.effects = {
-
                 }
 
                 this.initEquips();
@@ -84,14 +93,14 @@
             {
                 let effectText = '';
 
-                const txtStatusEffects = document.getElementById("effectsContainer")
+                const txtStatusEffects = document.getElementById("effects")
                 
                 for (const effectName in this.effects)
                 {
                     if(this.effects[effectName].duration > 0)
                     {
                         const effect = this.effects[effectName];
-                        effectText += `<div class="container">${effectName} ${effect.duration}</div> `;
+                        effectText += `<div id="effect" class="container">${effectName} ${effect.duration}</div> `;
                     }
                     else
                     {
@@ -104,6 +113,7 @@
         }
 
         var you = new Player();
+        document.getElementById("name").innerHTML = you.name;
 
         you.inflictEffect("Sleep","You are asleep, wake up!", 10, false)
         //you.inflictEffect("Burning","You are on fire!", 100, true)

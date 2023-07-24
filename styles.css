@@ -1,61 +1,70 @@
-#gameContainer {
-    width:1200;
-    height:900;
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%)
+:root{
+    --main-color:rgb(36, 36, 46);
+    --accent-color:rgb(72, 72, 91);
 }
-#playerContainer {
-    width:200px;
-    height:200px;
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-225%,-98%);
-}
-#actionContainer { 
-    width:500px;
-    height:400px;
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-50%,-50%)
-    
-}
-#effectsContainer {
-    width:200px;
-    height:200px;
-    position:absolute;
-    top:50%;
-    left:50%;
-    transform:translate(-225%,-2%)
-}
-#outputContainer {
-    position:absolute;
-    width:200px;
-    height:400px;
-    top:50%;
-    left:50%;
-    transform:translate(125%,-50%)
-}
-
 .container{
-    font-family: "Helvetica";
-    font-weight: bold;
-    border-style:groove;
-    border-color:black;
-    border-width:thick;
-    background-color:grey;
+    font-family:Verdana, sans-serif;
+    color:aliceblue;
+    background-color:var(--main-color);
 }
 
-.button {
-    font-family: "Helvetica";
-    font-weight: bold;
-    border-width: 5px;
-    border-color:black;
-    border-style:groove;
+.column{
     float:left;
-    margin: 5px;
-    background-color:rgb(180,180,180);
+    text-align:center;
+}
+
+.left{
+    width:225px;
+    height:750px;
+    background-color:rgb(54, 54, 69);
+}
+.right{
+    width:250px;
+}
+
+.center{
+    width:500px;
+}
+
+.row:after{
+    content:"";
+    display:table;
+    clear:both;
+}
+
+.label{
+    height:10%;
+    width:100%;
+
+    background-color:var(--accent-color);
+
+    font-weight:bold;
+}
+
+.button{
+
+}
+
+#player{
+    margin:10px;
+    height:45%;
+    width:90%;
+}
+
+#effectsContainer{
+    margin:10px;
+    height:45%;
+    width:90%;
+}
+
+#effect{
+    margin:10px;
+    height:10%;
+    width:90%;
+
+    background-color:var(--accent-color);
+}
+
+#effect:hover{
+    display:block;
 }

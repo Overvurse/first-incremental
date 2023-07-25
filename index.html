@@ -100,7 +100,7 @@
                     if(this.effects[effectName].duration > 0)
                     {
                         const effect = this.effects[effectName];
-                        effectText += `<div id="effect" class="container">${effectName} ${effect.duration}</div> `;
+                        effectText += `<div id="effect" class="container">${effectName} ${effect.duration} <span class="hoverInfo">${effect.desc}</span></div> `;
                     }
                     else
                     {

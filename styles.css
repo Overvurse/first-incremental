@@ -41,6 +41,10 @@
     font-weight:bold;
 }
 
+.hoverInfo{
+    display:none;
+}
+
 .button{
 
 }
@@ -65,6 +69,14 @@
     background-color:var(--accent-color);
 }
 
-#effect:hover{
+#effect:hover .hoverInfo{
+    height:50px;
+    width:200px;
+    position:relative;
+    top:-20px;
+    left:190px;
+    background-color:var(--main-color);
+    border-color:var(--accent-color);
+    border-style:solid;
     display:block;
 }
